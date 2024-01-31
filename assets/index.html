@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <title>Login - Sistema de Gerenciamento de Estoque</title>
+</head>
+<body>
+  <form class="form" onsubmit="return checkLogin()">
+    <img src="/assets/img/Logo.png" alt="" style="max-width: 250px; height: auto; margin-bottom: 20px;">
+
+    <p class="form-title">Login</p>
+    <div class="input-container">
+      <input type="text" id="username" placeholder="Usuário">
+    </div>
+    <div class="input-container">
+      <input type="password" id="password" placeholder="Senha">
+    </div>
+   
+      <button type="submit" class="submit">
+
+   
+      Entrar
+    </button>
+  </form>
+
+  <script>
+    function checkLogin() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Verificação de credenciais
+      if (username.toLowerCase() === 'admin' && password === '1234') {
+        // Redireciona para outra página após o login bem-sucedido
+        window.location.href = 'dashboardAdm.html';
+        return false; // Evita o envio do formulário
+      } else {
+        alert('Credenciais inválidas. Tente novamente.');
+        return false; // Evita o envio do formulário
+      }
+    }
+  </script>
+</body>
+</html>

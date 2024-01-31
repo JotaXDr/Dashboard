@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/styles/dashboard.css">
+    <style>
+        /* Adicione esses estilos para os ícones */
+        .delete-icon, .edit-icon {
+            cursor: pointer;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .delete-icon img, .edit-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .delete-icon {
+            top: 10px;
+            right: 10px;
+        }
+
+        .edit-icon {
+            top: 40px; /* Ajuste para posicionar abaixo do ícone de excluir */
+            right: 10px;
+        }
+
+        .delete-icon:hover, .edit-icon:hover {
+            opacity: 0.9;
+        }
+
+        .add-product-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4F46E5;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-product-btn:hover {
+            background-color: #434190;
+        }
+
+        /* Estilos adicionais para o layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .welcome-container {
+            background-color: #4F46E5;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #dashboardContainer {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative; /* Adicionado para corrigir a sobreposição dos ícones */
+        }
+
+        /* Adicione esses estilos para os produtos */
+        .product-info {
+            position: relative; /* Adicionado para posicionar corretamente os ícones */
+            margin-bottom: 20px;
+            padding-right: 40px; /* Ajuste para evitar sobreposição com os ícones */
+        }
+    </style>
+    <title>Bem-vindo - Sistema de Gerenciamento de Estoque</title>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Bem-vindo, João!</h1>
+    </div>
+    <img src="/assets/icons/user (1).png" alt="">
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Exemplo de um produto no estoque -->
+        <div class="product-info" id="product1">
+            <h3>Estoque de Vigas de Aço</h3>
+            <p>Quantidade: 50 unidades</p>
+            <span class="delete-icon" onclick="confirmDelete('product1')">
+                <img src="/assets/icons/trash-can.png" alt="" srcset="">
+            </span>
+            <span class="edit-icon" onclick="openEditModal(1)">
+                <img src="/assets/icons/edit.png" alt="" srcset="">
+            </span>
+        </div>
+        <!-- Adicione mais produtos e informações conforme necessário -->
+        <div class="product-info" id="product2">
+            <h3>Estoque de Tijolos</h3>
+            <p>Quantidade: 1000 unidades</p>
+            <span class="delete-icon" onclick="confirmDelete('product2')">
+                <img src="/assets/icons/trash-can.png" alt="" srcset="">
+            </span>
+            <span class="edit-icon" onclick="openEditModal(2)">
+                <img src="/assets/icons/edit.png" alt="" srcset="">
+            </span>
+        </div>
+        <!-- Adicione mais campos conforme necessário -->
+        <button class="add-product-btn" onclick="openAddProductModal()">Adicionar Novo Produto</button>
+    </div>
+    <!-- Modal para adicionar novo produto -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddProductModal()">&times;</span>
+            <h2>Adicionar Novo Produto</h2>
+            <form onsubmit="addNewProduct(); return false;">
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName" required>
+                <label for="productQuantity">Quantidade:</label>
+                <input type="number" id="productQuantity" required>
+                <button type="submit">Adicionar Produto</button>
+            </form>
+        </div>
+    </div>
+    <script src="/assets/scripts/script.js"></script>
+    <script>
+        function addNewProduct() {
+            var productName = document.getElementById('productName').value;
+            var productQuantity = document.getElementById('productQuantity').value;
+            var productList = document.getElementById('dashboardContainer');
+
+            var productDiv = document.createElement('div');
+            productDiv.className = 'product-info';
+
+            productDiv.innerHTML = `
+                <h3>${productName}</h3>
+                <p>Quantidade: ${productQuantity} unidades</p>
+                <span class="delete-icon" onclick="confirmDelete('${productDiv.id}')">
+                    <img src="/assets/icons/trash-can.png" alt="" srcset="">
+                </span>
+                <span class="edit-icon" onclick="openEditModal(${document.getElementsByClassName('product-info').length + 1})">
+                    <img src="/assets/icons/edit.png" alt="" srcset="">
+                </span>
+            `;
+
+            productList.insertBefore(productDiv, productList.firstChild);
+            closeAddProductModal();
+        }
+    </script>
+</body>
+</html>

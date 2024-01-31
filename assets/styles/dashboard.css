@@ -1,0 +1,106 @@
+/* Adicione o código CSS existente */
+
+/* Estilos para o modal */
+.modal {
+    text-align: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+   
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+  .close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #4F46E5;
+  }
+  
+  /* Adicionando estilos para o formulário no modal */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #4F46E5;
+  }
+  
+  input {
+    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4F46E5;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  /* Estilos para a dashboard */
+  .dashboard-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-info {
+    background-color: #D1D5DB;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .product-info h3 {
+    color: #1F2937;
+    margin-bottom: 10px;
+  }
+  
+  .product-info p {
+    color: #4B5563;
+    font-size: 14px;
+  }
+  .delete-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: #EF4444;
+    margin-left: 10px;
+  }
+  
+  .edit-icon, .delete-icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+  }
+  
+  .edit-icon:hover, .delete-icon:hover {
+    filter: brightness(1.2);
+  }
+
+  
